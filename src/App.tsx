@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CarouselContainer from './components/CarouselContainer';
+import CarouselContainer from './components/HomeCarousel/HomeCarouselManagement';
 import TravelPlanCardManagement from './components/TravelPlanCard/TravelPlanCardManagement';
 import NavBarNew from './components/NavBar/NavBar';
 

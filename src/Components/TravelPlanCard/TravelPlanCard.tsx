@@ -4,18 +4,24 @@ import TravelPlanCardLikeButtonManagement from './TravelPlanCardButtons/TravelPl
 import TravelPlanCardCommentButtonManagement from './TravelPlanCardButtons/TravelPlanCardCommentButtonManagement';
 import TravelPlanCardUsernameManagement from './TravelPlanCardUsername/TravelPlanCardUsernameManagement';
 import TravelPlanCardLocationManagement from './TravelPlanCardLocation/TravelPlanCardLocationManagement';
+import TravelPlanCardRandomImage from './TravelPlanCardRandomImage/TravelPlanCardRandomImage';
 
-import { TravelPlanProps } from './TravelPlanCardManagement';
+import { TravelPlan } from './TravelPlanCardManagement';
 
-const TravelPlanCard = ({ travelPlan }: TravelPlanProps) => {
+type TravelPlanCardProps = {
+  travelPlan: TravelPlan;
+  index: number;
+};
+
+const TravelPlanCard = ({ travelPlan, index }: TravelPlanCardProps) => {
   return (
     <>
-      <Col className='d-flex align-items-stretch'>
-        <Card className='travel-card'>
-          <Card.Img variant='top' src='https://picsum.photos/200' />
+      <Col className='d-flex align-items-stretch mb-5'>
+        <Card className='travel-card mx-auto'>
+          <TravelPlanCardRandomImage index={index} />
           <Card.Body className='d-flex flex-column'>
             {/* location and date */}
-            <TravelPlanCardLocationManagement travelPlan={travelPlan}/>
+            <TravelPlanCardLocationManagement travelPlanId={travelPlan.id}/>
             {/* username */}
             <Card.Subtitle>
               <TravelPlanCardUsernameManagement accountId={travelPlan.accountId}/>

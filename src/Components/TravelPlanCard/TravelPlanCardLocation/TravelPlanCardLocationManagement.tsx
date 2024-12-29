@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import TravelPlanCardLocation from './TravelPlanCardLocation';
 
-import { TravelPlanProps } from '../TravelPlanCardManagement';
 import TravelPlanCardDateManagement from '../TravelPlanCardDate/TravelPlanCardDateManagement';
+
+type TravelPlanCardLocationManagementProps = {
+  travelPlanId: number;
+}
 
 interface TravelPlanLocation {
   id: number;
@@ -18,7 +21,7 @@ export type TravelPlanLocationProps = {
   travelPlanLocation: TravelPlanLocation;
 }
 
-const TravelPlanCardLocationManagement = ({ travelPlan }: TravelPlanProps) => {
+const TravelPlanCardLocationManagement = ({ travelPlanId }: TravelPlanCardLocationManagementProps) => {
     const [travelPlanLocation, setTravelPlanLocation] = useState<TravelPlanLocation>();
 
     // TODO: modify useEffect for api call
@@ -33,11 +36,11 @@ const TravelPlanCardLocationManagement = ({ travelPlan }: TravelPlanProps) => {
             country: 'Australia',
             endDate: endDate,
             startDate: startDate,
-            travelPlanId: travelPlan.id
+            travelPlanId: travelPlanId,
         }
 
         setTravelPlanLocation(testTravelPlanLocation);
-    }, [travelPlan.id]);
+    }, [travelPlanId]);
 
   return (
     <>
